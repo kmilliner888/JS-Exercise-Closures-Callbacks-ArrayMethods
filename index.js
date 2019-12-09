@@ -88,17 +88,16 @@ function processLastItem(stringList, callback) {
  * should return 1000.
 */
 function processSum(numberList, callback) {
-  var sum = numberList.reduce(function(sum, currentValue) {
-    return sum + currentValue;
-  }, 0);
-  callback(sum);
+  return callback(numberList.reduce(function(a,b) {
+    return a + b
+  }, 0));
 };
 
-function outputSum(sum) {
-  console.log("The sum is" + sum);
-}
+// function sumResult(sum) {
+//   console.log("The sum is" + sum);
+// }
 
-console.log(processSum(numberList, outputSum));
+// console.log(processSum(numberList, sumResult));
 
 /**
  * ### Challenge `processProduct`
@@ -118,8 +117,8 @@ console.log(processSum(numberList, outputSum));
  * [2] Invoking `processProduct` passing 25 and 0 and `(num) => num + 1000`,
  * should return 1000.
 */
-function processProduct(/* CODE HERE */) {
-  /* CODE HERE */
+function processProduct(num1, num2, callback) {
+  return callback(num1 * num2);
 }
 
 /**
@@ -142,9 +141,20 @@ function processProduct(/* CODE HERE */) {
  * "lady gaga" and `['foo', 'bar']` and `(bool) => bool ? 'nice!' : 'sad'`,
  * should return "sad".
 */
-function processContains(/* CODE HERE */) {
-  /* CODE HERE */
-}
+function processContains(item, list, callback) {
+  callback((bool)=> {
+    if (list.includes(item)) {
+      return bool;
+    } 
+    else {
+      return bool;
+    };
+  });
+  return callback();
+};
+
+// console.log(processContains("foo", `["foo", "bar"]`, `(bool) => bool ? "nice!" : "sad"`));
+
 
 /**
  * ### Challenge `processDuplicateFree`
@@ -187,9 +197,15 @@ function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS
  * @returns an array with all the runners' full names in the following format: "Smith, John".
  * The full names appear in the array in the same order the runners appear in the `runners` array.
 */
-function getFullNames(/* CODE HERE */) {
-  /* CODE HERE */
-}
+function getFullNames(runners) {
+  let newRunnersArray = [];
+  runners.forEach(runners => {
+    return `${runners.last_name}, ${runners.first_name}`
+  });
+  return newRunnersArray;
+};
+
+
 
 /**
  * ### Challenge `firstNamesAllCaps`
@@ -203,9 +219,12 @@ function getFullNames(/* CODE HERE */) {
  * @returns an array with all the runners' first names in ALL CAPS.
  * The first names appear in the array in the same order the runners appear in the `runners` array.
 */
-function firstNamesAllCaps(/* CODE HERE */) {
-  /* CODE HERE */
-}
+function firstNamesAllCaps(runners) {
+  const upperFirst = runners.map(runners => {
+    return (runners.first_name.toUpperCase())
+  });
+  return upperFirst;
+};
 
 /**
  * ### Challenge `getRunnersByTShirtSize`
